@@ -1,0 +1,6 @@
+for vpn static, first make 2 instances with the 2 networks created.Create firewall rules for the
+2 networks and while doing so give the same ip to both the firewalls.
+Dont choose external ip while creating instance.
+After creating instance, go to external ip and reserve ip,then go to hybrid connectivity and choose vpn classic.
+Create the first vpn with the first network and static ip then in tunneling refer the 2nd static ip. choose route and give the ip
+of the desination vpc network. Repeat the process for the next vpn too. ping internal ip in vm ssh shell and its good to go.

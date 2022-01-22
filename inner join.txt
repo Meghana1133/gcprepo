@@ -1,0 +1,18 @@
+-- create a table
+create table student(student_id int(20) primary key,student_name varchar(50),
+student_class varchar(50));
+
+-- fetch some values
+create table studentmarks(student_id int not null,student_sub1 int(20),student_sub2 varchar(50),
+foreign key(student_id)references student(student_id));
+INSERT INTO student VALUES (1, 'Meghana', 'GCP');
+INSERT INTO student VALUES (2, 'Hari', 'SRE');
+select * from student;
+INSERT INTO studentmarks VALUES (1,10, 20);
+INSERT INTO studentmarks VALUES (2,40,50);
+select * from studentmarks;
+-- inner join
+select s.student_id,s.student_name,s.student_class,sm.student_sub1,sm.student_sub2
+from student s 
+join studentmarks sm
+on s.student_id=sm.student_id;

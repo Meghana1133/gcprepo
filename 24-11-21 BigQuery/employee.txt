@@ -1,0 +1,4 @@
+id name post place
+1  A    A1   P1
+2  B    B2   P2
+3  C    C2   C2

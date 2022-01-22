@@ -1,0 +1,29 @@
+-----For multiple web pages-----
+
+docker run -d -p 8080:80 nginx:latest  (creates a deamon to run images)
+
+gitclone https://github.com/learning-zone/website-templates  (clone the repository)
+
+docker cp contentsinsidethefile containerid:/usr/share/nginx/html/ 
+
+docker commit conatinerid temp1:version1
+
+docker tag temp1:version1 us.gcr.io/tarkshyas-110000000/temp1:version1
+
+docker push us.gcr.io/tarkshyas-110000000/temp1:version1
+
+(go to container registry and docker will be visible. before push enable container registry api)
+
+connect to k8s cluster
+
+kubectl create deployment nginx-1 --image=us.gcr.io/tarkshyas-1636464424540/temp1:version1 
+
+kubectl expose deployment nginx-1 --type LoadBalancer --port 80 --target-port 80
+
+kubectl get pods
+
+kubectl get services nginx-1
+
+-----For scaling nodes on cluster in cloud shell-----
+
+gcloud container clusters resize cluster-1 --node-pool default-pool --num-nodes=2 --region=us-central1

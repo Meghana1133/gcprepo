@@ -1,0 +1,6 @@
+-- try this at https://www.w3schools.com/sql/trysql.asp?filename=trysql_asc
+
+SELECT Country,count(CustomerID) as Countofcust
+from Customers group by Country order by PostalCode;
+
+SELECT * from [Customers] where CustomerID in(1,5,7);

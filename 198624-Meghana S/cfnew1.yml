@@ -1,0 +1,27 @@
+- name: Create cloud function
+  hosts: localhost
+  connection: local
+  become: false
+  gather_facts: no
+  
+  vars:
+    gcp_project: "tarkshyas-1636464439133"
+    gcp_cred_kind: "serviceaccount"
+    gcp_cred_file: "/home/tsgcp_user11/ansible/serv.json"
+    gcp_region: "us-central1"
+    gcp_zone: "us-central1-a"
+    resource_name: cf1
+    
+  tasks:
+    - name: create a cloud function
+      gcp_cloudfunctions_cloud_function:
+                                    name: function1
+                                    location: us-central1
+                                    entry_point: helloWorld
+                                    source_archive_url: "gs://bkt-cloud-funtn/nodejs.zip"
+                                    trigger_http: 'true'
+                                    project: "tarkshyas-1636464439133"
+                                    auth_kind: "serviceaccount"
+                                    runtime: nodejs12
+                                    service_account_file: "/home/tsgcp_user11/ansible/serv.json"
+                                    state: present
